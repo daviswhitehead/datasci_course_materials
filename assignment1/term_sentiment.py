@@ -62,7 +62,10 @@ def main():
     sentiment_file = open(sys.argv[1], 'r')
     twittersteam_file = open(sys.argv[2], 'r')
     sentiment_scores = process_sentiment_file(sentiment_file)
-    non_sentiment_words = process_twittersteam_file(twittersteam_file, sentiment_scores)
+    non_sentiment_words = process_twittersteam_file(
+        f=twittersteam_file,
+        sentiment_scores=sentiment_scores
+    )
     score_non_sentiment_words(non_sentiment_words)
 
 
