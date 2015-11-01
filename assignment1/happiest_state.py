@@ -94,12 +94,29 @@ def process_twittersteam_file(f, sentiment_scores):
     target_file = open('tweet_sentiment_output.txt', 'w')
     for line in f:
         tweet = json.loads(line)
-        if 'text' in tweet:
+        count = 0
+        if ('text' in tweet
+        and 'coordinates' in tweet
+        and tweet['coordinates']):
             score = score_tweet_text(tweet['text'], sentiment_scores)
-            target_file.write('{}\n'.format(score))
+            # print tweet
+            print count
+            print tweet['coordinates']['coordinates']
+            lng = tweet['coordinates']['coordinates'][0]
+            lat = tweet['coordinates']['coordinates'][1]
+            g = geocoder.google([lat, lng], method='reverse')
+            print g
+            print g.city
+            print g.state
+            print g.state_long
+            print g.country
+            print g.country_long
+            print
+            count += 1
+            # target_file.write('{}\n'.format(score))
         else:
             score = 0
-            target_file.write('{}\n'.format(score))
+            # target_file.write('{}\n'.format(score))
 
 
 def main():

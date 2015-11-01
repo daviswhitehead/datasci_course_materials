@@ -26,8 +26,10 @@ def process_twittersteam_file(f, sentiment_scores):
     for line in f:
         tweet = json.loads(line)
         if 'text' in tweet:
+            print tweet
             score = score_tweet_text(tweet['text'], sentiment_scores)
             target_file.write('{}\n'.format(score))
+
         else:
             score = 0
             target_file.write('{}\n'.format(score))
