@@ -17,6 +17,7 @@ access_token_secret = twitter_creds['access_token_secret']
 _debug = 0
 
 oauth_token = oauth.Token(key=access_token_key, secret=access_token_secret)
+
 oauth_consumer = oauth.Consumer(key=api_key, secret=api_secret)
 
 signature_method_hmac_sha1 = oauth.SignatureMethod_HMAC_SHA1()
@@ -24,6 +25,7 @@ signature_method_hmac_sha1 = oauth.SignatureMethod_HMAC_SHA1()
 http_method = "GET"
 
 http_handler = urllib.HTTPHandler(debuglevel=_debug)
+
 https_handler = urllib.HTTPSHandler(debuglevel=_debug)
 
 '''
